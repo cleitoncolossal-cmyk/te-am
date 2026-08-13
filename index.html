@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Para o Meu Grande Amor ❤️</title>
+    
+    <!-- Animações CSS via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root {
+            --primary: #ff4b6e;
+            --primary-gradient: linear-gradient(135deg, #ff4b6e, #ff758c);
+            --bg: #0b0b10;
+            --card-bg: #161622;
+            --text: #f8f9fa;
+            --subtext: #b0b3c6;
+            --accent: #ffd166;
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 12px 12px 40px 12px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fundo de Corações Flutuantes */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            color: rgba(255, 75, 110, 0.35);
+            animation: floatUp 7s infinite linear;
+            will-change: transform, opacity;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 35px 20px 25px 20px;
+            background: linear-gradient(180deg, rgba(255,75,110,0.18) 0%, rgba(22,22,34,0.9) 100%);
+            border-radius: 24px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 75, 110, 0.25);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .heart-icon-main {
+            font-size: 2.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            line-height: 1.25;
+        }
+
+        p.subtitle {
+            font-size: 0.95rem;
+            color: var(--subtext);
+            font-weight: 400;
+        }
+
+        /* Cards Mobile */
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border: 1px solid var(--card-border);
+        }
+
+        .card h2 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 0.98rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Video */
+        .video-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+            margin-top: 12px;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Galeria */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .img-container {
+            overflow: hidden;
+            border-radius: 16px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Botão Interativo */
+        .surprise-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 16px 24px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 6px 20px rgba(255, 75, 110, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .surprise-btn:active {
+            transform: scale(0.96);
+        }
+
+        .hidden-message {
+            display: none;
+            margin-top: 16px;
+            padding: 18px;
+            background: rgba(255, 75, 110, 0.12);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 75, 110, 0.3);
+            text-align: center;
+        }
+
+        .hidden-message p {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 10px 10px 10px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fundo com Corações Flutuantes -->
+    <div class="hearts-bg" id="heartsContainer"></div>
+
+    <div class="container">
+        
+        <!-- Header -->
+        <header class="animate__animated animate__fadeInDown">
+            <span class="heart-icon-main">💖</span>
+            <h1>Para o Amor da Minha Vida</h1>
+            <p class="subtitle">Um lugarzinho especial feito só pra te lembrar do quanto eu te amo.</p>
+        </header>
+
+        <!-- Carta sobre os Olhos -->
+        <section class="card animate__animated animate__fadeInUp animate__delay-1s">
+            <h2>✨ O Seu Olhar</h2>
+            <p>
+                Sabe, cada detalhe em você me encanta, mas os seus olhos têm algo mágico. 
+                Toda vez que eu olho para você através do seu óculos, vejo um brilho único,
+                uma imensidão de carinho e uma beleza que me faz ter certeza de que encontrei a pessoa certa. 
+                O seu olhar me acalma, me traz paz e faz meu coração bater mais forte todos os dias. 
+                Eu amo tudo em você!
+            </p>
+        </section>
+
+        <!-- Vídeo do Dia dos Namorados -->
+        <section class="card animate__animated animate__fadeInUp animate__delay-2s">
+            <h2>🎁 O Dia da Cesta</h2>
+            <p>
+                Relembrar esse momento sempre me faz sorrir! O dia em que te entreguei aquela cesta no Dia dos Namorados... ver a sua reação, a sua surpresa e o seu sorriso lindo não tem preço.
+            </p>
+            <div class="video-container">
+                <video controls playsinline preload="metadata">
+                    <source src="WhatsApp Video 2026-08-13 at 01.19.45.mp4" type="video/mp4">
+                    Seu navegador não suporta a exibição deste vídeo.
+                </video>
+            </div>
+        </section>
+
+        <!-- Galeria de Fotos -->
+        <section class="card animate__animated animate__fadeInUp animate__delay-3s">
+            <h2>📸 Nossos Momentos</h2>
+            <div class="gallery">
+                <div class="img-container">
+                    <img src="WhatsApp Image 2026-08-13 at 01.19.45.jpeg" alt="Nosso momento especial">
+                </div>
+                <div class="img-container">
+                    <img src="WhatsApp Image 2026-08-13 at 01.19.46 (1).jpeg" alt="Foto especial">
+                </div>
+                <div class="img-container">
+                    <img src="WhatsApp Image 2026-08-13 at 01.19.46.jpeg" alt="Momento lindo">
+                </div>
+            </div>
+        </section>
+
+        <!-- Botão Interativo Surpresa -->
+        <section class="card animate__animated animate__fadeInUp animate__delay-4s">
+            <h2 style="justify-content: center;">💌 Recadinho Especial</h2>
+            <button class="surprise-btn" onclick="toggleSurprise()">
+                <span>Toque aqui para abrir</span> ❤️
+            </button>
+            
+            <div id="surpriseMessage" class="hidden-message animate__animated">
+                <p>
+                    Você é o meu porto seguro, minha melhor companhia e o maior presente da minha vida. Obrigado por existir e por me fazer tão feliz! Amo você pra sempre. 🥰
+                </p>
+            </div>
+        </section>
+
+        <footer class="animate__animated animate__fadeIn">
+            Com todo o meu amor, para sempre. 💖
+        </footer>
+
+    </div>
+
+    <!-- Scripts Otimizados -->
+    <script>
+        function toggleSurprise() {
+            const msg = document.getElementById('surpriseMessage');
+            if (msg.style.display === 'block') {
+                msg.style.display = 'none';
+            } else {
+                msg.style.display = 'block';
+                msg.classList.remove('animate__fadeOut');
+                msg.classList.add('animate__backInUp');
+            }
+        }
+
+        function createHeart() {
+            const container = document.getElementById('heartsContainer');
+            if (container.children.length > 15) return;
+
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 90 + 5 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 5 + 's';
+            heart.style.fontSize = Math.random() * 12 + 16 + 'px';
+            
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        setInterval(createHeart, 600);
+    </script>
+</body>
+</html>
